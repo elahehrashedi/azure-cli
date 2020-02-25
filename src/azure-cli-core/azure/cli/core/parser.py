@@ -137,7 +137,13 @@ class AzCliCommandParser(CLICommandParser):
         with CommandLoggerContext(logger):
             logger.error('%(prog)s: error: %(message)s', args)
         self.print_usage(sys.stderr)
+        AzCliCommandParser.recommendation_provider(self.prog)
         self.exit(2)
+
+    # This method is meant to be a hook that can be overridden by an extension or module.
+    @staticmethod
+    def recommendation_provider(cli_term):
+        pass
 
     def format_help(self):
         extension_version = None

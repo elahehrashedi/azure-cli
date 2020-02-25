@@ -55,7 +55,6 @@ except KeyboardInterrupt:
     sys.exit(1)
 except SystemExit as ex:  # some code directly call sys.exit, this is to make sure command metadata is logged
     exit_code = ex.code if ex.code is not None else 1
-
     try:
         elapsed_time = timeit.default_timer() - start_time
     except NameError:
